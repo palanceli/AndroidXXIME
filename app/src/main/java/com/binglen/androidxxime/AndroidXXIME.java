@@ -48,8 +48,8 @@ public class AndroidXXIME extends InputMethodService
     @Override
     public View onCreateInputView() {
         // keyboard被创建后，将调用onCreateInputView函数
-        keyboardView = (KeyboardView)getLayoutInflater().inflate(R.layout.keyboard, null);
-        keyboard = new Keyboard(this, R.xml.qwerty);
+        keyboardView = (KeyboardView)getLayoutInflater().inflate(R.layout.keyboard, null);  // 此处使用了keyboard.xml
+        keyboard = new Keyboard(this, R.xml.qwerty);  // 此处使用了qwerty.xml
         keyboardView.setKeyboard(keyboard);
         keyboardView.setOnKeyboardActionListener(this);
         return keyboardView;

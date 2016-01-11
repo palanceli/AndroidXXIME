@@ -12,10 +12,10 @@
             android:label="@string/xxime"
             android:permission="android.permission.BIND_INPUT_METHOD"
             >
-            <meta-data android:name="android.view.im" android:resource="@xml/method"/>
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
             </intent-filter>
+            <meta-data android:name="android.view.im" android:resource="@xml/method"/>
         </service>
 
     </application>
