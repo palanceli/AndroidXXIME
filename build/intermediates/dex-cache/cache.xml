@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="/Users/palance/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_4c617e7e5349199a46284f18e39c88277b045da6.jar" />
-    </item>
-    <item
         jar="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
         jumboMode="false"
         revision="23.0.2"
@@ -16,18 +9,25 @@
         <dex dex="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_804c4cf9f0417ab43f968b25ee6980ef847f8c42.jar" />
     </item>
     <item
-        jar="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_b78cf63ac361ce2a36dea4f4642c627746fe80cd.jar" />
-    </item>
-    <item
         jar="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="5c5699834e9722f1c288fea2de82725d078ba127">
         <dex dex="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_ee05feccf69cb218b983135281fcb866c6056273.jar" />
+    </item>
+    <item
+        jar="/Users/palance/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_4c617e7e5349199a46284f18e39c88277b045da6.jar" />
+    </item>
+    <item
+        jar="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/palance/Documents/SubVersions/AndroidXXIME/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_b78cf63ac361ce2a36dea4f4642c627746fe80cd.jar" />
     </item>
 
 </items>
