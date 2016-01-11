@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidXXIme</string>
+    <string name="xxime">XXIME</string>
+    <string name="subtype_en_US">English (US)</string>
+</resources>
