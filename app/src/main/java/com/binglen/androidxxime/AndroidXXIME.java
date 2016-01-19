@@ -16,6 +16,21 @@ public class AndroidXXIME extends InputMethodService
 
     private KeyboardView keyboardView; // 对应keyboard.xml中定义的KeyboardView
     private Keyboard keyboard;  // 对应qwerty.xml中定义的Keyboard
+    private CandidateView candidateView;
+
+    @Override public void onCreate(){
+
+    }
+
+    @Override public void onInitializeInterface(){
+
+    }
+
+    @Override public View onCreateCandidatesView(){
+        candidateView = new CandidateView(this);
+        candidateView.setService(this);
+        return candidateView;
+    }
 
     @Override
     public void onPress(int primaryCode) {
