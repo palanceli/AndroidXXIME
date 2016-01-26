@@ -28,11 +28,11 @@ public class AndroidXXIME extends InputMethodService
 
     }
 
-    @Override public View onCreateCandidatesView(){
+/*    @Override public View onCreateCandidatesView(){
         candidateView = new CandidateView(this);
         candidateView.setService(this);
         return candidateView;
-    }
+    }*/
 
     @Override
     public void onPress(int primaryCode) {
