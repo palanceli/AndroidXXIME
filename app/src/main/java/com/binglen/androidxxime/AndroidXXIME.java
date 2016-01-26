@@ -19,6 +19,8 @@ public class AndroidXXIME extends InputMethodService
     private CandidateView candidateView;
 
     @Override public void onCreate(){
+        int i=0;
+        i++;
 
     }
 
