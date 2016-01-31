@@ -25,39 +25,18 @@ public class CandidateView extends View {
 
     private AndroidXXIME mService;
     private List<String> mSuggestions;
-//    private int mSelectedIndex;
-    private int mTouchX = OUT_OF_BOUNDS;
     private Drawable mSelectionHighlight;
-    private boolean mTypedWordValid;
-
-    private Rect mBgPadding;
-
-    private static final int MAX_SUGGESTIONS = 32;
-    private static final int SCROLL_PIXELS = 20;
-
-    private int[] mWordWidth = new int[MAX_SUGGESTIONS];
-    private int[] mWordX = new int[MAX_SUGGESTIONS];
 
     private static final int X_GAP = 10;
 
     private static final List<String> EMPTY_LIST = new ArrayList<String>();
 
     private int mColorNormal;
-    private int mColorRecommended;
-    private int mColorOther;
     private int mVerticalPadding;
     private Paint mPaint;
-    private boolean mScrolled;
-    private int mTargetScrollX;
 
     private int mTotalWidth;
 
-    private GestureDetector mGestureDetector;
-
-    /**
-     * Construct a CandidateView for showing suggested words for completion.
-     * @param context
-     */
     public CandidateView(Context context) {
         super(context);
         Log.d(this.getClass().toString(), "CandidateView: ");
@@ -75,8 +54,6 @@ public class CandidateView extends View {
         setBackgroundColor(getResources().getColor(R.color.candidate_background, null));
 
         mColorNormal = r.getColor(R.color.candidate_normal, null);
-        mColorRecommended = r.getColor(R.color.candidate_recommended, null);
-        mColorOther = r.getColor(R.color.candidate_other, null);
         mVerticalPadding = r.getDimensionPixelSize(R.dimen.candidate_vertical_padding);
 
         mPaint = new Paint();
@@ -117,8 +94,7 @@ public class CandidateView extends View {
                 + padding.top + padding.bottom;
 
         // Maximum possible width and desired height
-        setMeasuredDimension(measuredWidth,
-                resolveSize(desiredHeight, heightMeasureSpec));
+        setMeasuredDimension(measuredWidth, resolveSize(desiredHeight, heightMeasureSpec));
     }
 
     /**
@@ -128,27 +104,16 @@ public class CandidateView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         Log.d(this.getClass().toString(), "onDraw: ");
-        if (canvas != null) {
-            super.onDraw(canvas);
-        }
-        mTotalWidth = 0;
-        if (mSuggestions == null) return;
+        super.onDraw(canvas);
 
-        if (mBgPadding == null) {
-            mBgPadding = new Rect(0, 0, 0, 0);
-            if (getBackground() != null) {
-                getBackground().getPadding(mBgPadding);
-            }
-        }
+        mTotalWidth = 0;
+        if (mSuggestions == null)
+            return;
+
         int x = 0;
         final int count = mSuggestions.size();
         final int height = getHeight();
-        final Rect bgPadding = mBgPadding;
         final Paint paint = mPaint;
-        final int touchX = mTouchX;
-        final int scrollX = getScrollX();
-        final boolean scrolled = mScrolled;
-        final boolean typedWordValid = mTypedWordValid;
         final int y = (int) (((height - mPaint.getTextSize()) / 2) - mPaint.ascent());
 
         for (int i = 0; i < count; i++) {
@@ -156,32 +121,7 @@ public class CandidateView extends View {
             float textWidth = paint.measureText(suggestion);
             final int wordWidth = (int) textWidth + X_GAP * 2;
 
-            mWordX[i] = x;
-            mWordWidth[i] = wordWidth;
-            paint.setColor(mColorNormal);
-            if (touchX + scrollX >= x && touchX + scrollX < x + wordWidth && !scrolled) {
-                if (canvas != null) {
-                    canvas.translate(x, 0);
-                    mSelectionHighlight.setBounds(0, bgPadding.top, wordWidth, height);
-                    mSelectionHighlight.draw(canvas);
-                    canvas.translate(-x, 0);
-                }
-//                mSelectedIndex = i;
-            }
-
-            if (canvas != null) {
-                if ((i == 1 && !typedWordValid) || (i == 0 && typedWordValid)) {
-                    paint.setFakeBoldText(true);
-                    paint.setColor(mColorRecommended);
-                } else if (i != 0) {
-                    paint.setColor(mColorOther);
-                }
-                canvas.drawText(suggestion, x + X_GAP, y, paint);
-                paint.setColor(mColorOther);
-                canvas.drawLine(x + wordWidth + 0.5f, bgPadding.top,
-                        x + wordWidth + 0.5f, height + 1, paint);
-                paint.setFakeBoldText(false);
-            }
+            canvas.drawText(suggestion, x + X_GAP, y, paint);
             x += wordWidth;
         }
         mTotalWidth = x;
@@ -193,14 +133,12 @@ public class CandidateView extends View {
         if (suggestions != null) {
             mSuggestions = new ArrayList<String>(suggestions);
         }
-        mTypedWordValid = typedWordValid;
         invalidate();
         requestLayout();
     }
 
     public void clear() {
         mSuggestions = EMPTY_LIST;
-//        mTouchX = OUT_OF_BOUNDS;
         invalidate();
     }
 }
