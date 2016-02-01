@@ -51,7 +51,6 @@ public class AndroidXXIME extends InputMethodService
     @Override public View onCreateCandidatesView(){
         Log.d(this.getClass().toString(), "onCreateCandidatesView: ");
         candidateView = new CandidateView(this);
-        candidateView.setService(this);
         return candidateView;
     }
 
@@ -74,7 +73,7 @@ public class AndroidXXIME extends InputMethodService
         if(candidateView != null){
             ArrayList<String> list = new ArrayList<String>();
             list.add(m_composeString.toString());
-            candidateView.setSuggestions(list, true, true);
+            candidateView.setSuggestions(list);
         }
     }
 
