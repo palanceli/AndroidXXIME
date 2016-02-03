@@ -5,7 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="candidate_normal">#FF000000</color>
-    <color name="candidate_recommended">#FFE35900</color>
-    <color name="candidate_other">#ff808080</color>
     <color name="candidate_background">#bb00ffff</color>
 </resources>

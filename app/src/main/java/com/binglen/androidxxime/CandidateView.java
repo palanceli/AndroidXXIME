@@ -20,13 +20,11 @@ import java.util.List;
  * Created by palance on 16/1/19.
  */
 public class CandidateView extends View {
-    private List<String> mSuggestions;
-
-    private static final int X_GAP = 10;
-
-    private int mColorNormal;
-    private int mVerticalPadding;
-    private Paint mPaint;
+    private List<String> mSuggestions;      // 存放候选列表
+    private static final int X_GAP = 10;    // 每个候选之间的间隔
+    private int mColorNormal;               // 候选前景色
+    private int mVerticalPadding;           // 候选文字上下边距
+    private Paint mPaint;                   // 用于绘制候选
 
     public CandidateView(Context context) {
         super(context);
@@ -45,15 +43,15 @@ public class CandidateView extends View {
         mPaint.setTextSize(r.getDimensionPixelSize(R.dimen.candidate_font_height));
         mPaint.setStrokeWidth(0);
 
-        setHorizontalFadingEdgeEnabled(true);
-        setWillNotDraw(false);
-        setHorizontalScrollBarEnabled(false);
-        setVerticalScrollBarEnabled(false);
+        setWillNotDraw(false);  // 覆盖了onDraw函数应清除该标记
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         Log.d(this.getClass().toString(), "onMeasure: ");
+        int wMode = MeasureSpec.getMode(widthMeasureSpec);
+        int wSize = MeasureSpec.getSize(widthMeasureSpec);
+
         int measuredWidth = resolveSize(50, widthMeasureSpec);
 
         final int desiredHeight = ((int)mPaint.getTextSize()) + mVerticalPadding;
