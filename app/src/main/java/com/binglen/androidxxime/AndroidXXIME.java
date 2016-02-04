@@ -131,21 +131,23 @@ public class AndroidXXIME extends InputMethodService
         playClick(primaryCode);
         switch(primaryCode){
             case Keyboard.KEYCODE_DELETE :
+                // 如果收到的是DELETE键，则删除光标前的一个字符
                 ic.deleteSurroundingText(1, 0);
                 break;
             case Keyboard.KEYCODE_DONE:
+                // 如果收到的是DONE键，则执行回车
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
             default:
                 char code = (char)primaryCode;
-                if(code == ' '){
-                    if(m_composeString.length() > 0) {
+                if(code == ' '){ // 如果收到的是空格
+                    if(m_composeString.length() > 0) {  // 如果有写作串，则将首个候选提交上屏
                         ic.commitText(m_composeString, m_composeString.length());
                         m_composeString.setLength(0);
-                    }else{
+                    }else{                              // 如果没有写作串，则直接将空格上屏
                         ic.commitText(" ", 1);
                     }
-                }else {
+                }else {          // 否则，将字符计入写作串
                     m_composeString.append(code);
                     ic.setComposingText(m_composeString, 1);
                 }
