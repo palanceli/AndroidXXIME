@@ -30,6 +30,7 @@ public class CandidateView extends View {
         super(context);
         Log.d(this.getClass().toString(), "CandidateView: ");
 
+        // 设置前景、背景色、字体、字号
         Resources r = context.getResources();
 
         setBackgroundColor(getResources().getColor(R.color.candidate_background, null));
@@ -56,7 +57,7 @@ public class CandidateView extends View {
 
         final int desiredHeight = ((int)mPaint.getTextSize()) + mVerticalPadding;
 
-        // Maximum possible width and desired height
+        // 系统会根据返回值确定窗体的大小
         setMeasuredDimension(measuredWidth, resolveSize(desiredHeight, heightMeasureSpec));
     }
 
@@ -68,6 +69,7 @@ public class CandidateView extends View {
         if (mSuggestions == null)
             return;
 
+        // 依次绘制每组候选字串
         int x = 0;
         final int count = mSuggestions.size();
         final int height = getHeight();
@@ -84,6 +86,7 @@ public class CandidateView extends View {
     }
 
     public void setSuggestions(List<String> suggestions) {
+        // 设置候选字串列表
         if (suggestions != null) {
             mSuggestions = new ArrayList<String>(suggestions);
         }
